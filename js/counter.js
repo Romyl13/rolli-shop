@@ -1,16 +1,18 @@
 window.addEventListener('click', (event) => {/* відділяємо кліки крч, зараз кілки є по всій сторінці але в середину коду пропишем щоб щотчик редагувався тільки при кліку на кнопки - чи + */
-    /* console.log(event.target); - тут описується на якому тегові було нажато (img div і тд)*/
+
+    let counter;
+
+    if (event.target.dataset.action  === 'plus' || event.target.dataset.action  === 'minus') {
+    const counterWrapper = event.target.closest('.counter-wrapper');//шукає найближчого батька(closest())
+    counter = counterWrapper.querySelector('[data-counter]');
+    };
+/* console.log(event.target); - тут описується на якому тегові було нажато (img div і тд)*/
     if (event.target.dataset.action  === 'plus' /* dataset.назва атрибуту - таким способом можна обратитись до назви атрибуту */) {
         //зараз ми короче повертаємось до батька дата-атрибуту, потім в батьковому блоці шукаємо атриюут data-counter в якому записано число
-        const counterWrapper = event.target.closest('.counter-wrapper');//шукає найближчого батька(closest())
-
-        const counter = counterWrapper.querySelector('[data-counter]');
         counter.innerText = ++counter.innerText;
     };
 
     if (event.target.dataset.action  === 'minus') {
-        const counterWrapper = event.target.closest('.counter-wrapper');
-        const counter = counterWrapper.querySelector('[data-counter]');
         if (parseInt(counter.innerText) > 1) {
             counter.innerText = --counter.innerText;
         };
