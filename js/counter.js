@@ -22,7 +22,7 @@ window.addEventListener('click', (event) => {/* відділяємо кліки 
 
              toggleCartStatus();//відображення статусу корзини буд у тій функції
 
-             calcCartPrice();//запускаємо перерахунок
+             calcCartPriceAndDelivery();//запускаємо перерахунок
         }
 
     };
@@ -30,7 +30,7 @@ window.addEventListener('click', (event) => {/* відділяємо кліки 
     //провіряємо на клік + чи - у середині корзини
     if (event.target.hasAttribute('data-action') && event.target.closest('.cart-wrapper')) {
         //запускаєм перерахунок всіє кількості товарів у корзині
-        calcCartPrice();
+        calcCartPriceAndDelivery();
     }
 });
 
