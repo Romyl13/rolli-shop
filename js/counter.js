@@ -19,10 +19,19 @@ window.addEventListener('click', (event) => {/* відділяємо кліки 
         } else if (event.target.closest('.cart-wrapper') && parseInt(counter.innerText) === 1) {
              event.target.closest('.cart-item').remove();//видаляємо елемент з корзини
 
+
              toggleCartStatus();//відображення статусу корзини буд у тій функції
+
+             calcCartPrice();//запускаємо перерахунок
         }
 
     };
+
+    //провіряємо на клік + чи - у середині корзини
+    if (event.target.hasAttribute('data-action') && event.target.closest('.cart-wrapper')) {
+        //запускаєм перерахунок всіє кількості товарів у корзині
+        calcCartPrice();
+    }
 });
 
 
